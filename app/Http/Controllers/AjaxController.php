@@ -15,6 +15,6 @@ class AjaxController extends Controller
     public function readData(){
        $users = User::all();
 
-        return response($users);
+        return view('ajax.usersList', compact('users'));
     }
 }

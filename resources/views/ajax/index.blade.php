@@ -36,26 +36,7 @@
         $("#read-data").on('click', function () {
 
             $.get("{{URL::to('estudantes/read')}}", function(data){
-
-                $('#info-body').empty()
-                $.each(data, function (i, value) {
-                    var tr =$("<tr/>");
-                        tr.append($("<td/>", {
-                            text : value.id
-                        }))
-                            .append($("<td/>", {
-                            text: value.name
-                        })).append($("<td/>", {
-                            text: value.email
-                        })).append($("<td/>", {
-                            text: value.endereco
-                        })).append($("<td/>", {
-                            html: "<a href=''><i class='icon ion-plus-circled'></i></a><a href=''> <i class='icon ion-edit'></i></a><a href=''> <i class='icon ion-close-circled'></i></a>"
-                        }));
-
-                    $('#info-body').append(tr);
-
-                });
+                $('#info-body').empty().append(data)
             });
         })
     </script>
