@@ -6,7 +6,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/estudantes', 'AjaxController@index')->middleware('auth');
-Route::get('/estudantes/read', 'AjaxController@readData');
+Route::resource('/home', 'ContactController');
+
+Route::get('api/contact','ContactController@apiContact')->name('api.contact');
+

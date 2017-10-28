@@ -999,7 +999,6 @@ var app = new Vue({
 
 
 window._ = __webpack_require__(12);
-
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
