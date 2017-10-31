@@ -60,6 +60,29 @@
             $('#modal-title').text('Adicionar');
 
         }
+        
+        function editForm(id) {
+            save_method = 'edit';
+            $('input[name=_method]').val('PATCH');
+            $('#modal-form form')[0].reset();
+            $.ajax({
+                url: "{{url('home')}}" + '/' + id + "/edit",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data){
+                    $('#modal-form').modal('show');
+                    $('.modal-title').text('Editar');
+
+                    $('#id').val(data.id);
+                    $('#name').val(data.name);
+                    $('#email').val(data.email);
+                },
+                error: function(){
+                    alert("Erro ao atualizar");
+                }
+            });
+        }
+
 
      $(function(){
          $('#modal-form form').validator().on('submit', function (e) {
