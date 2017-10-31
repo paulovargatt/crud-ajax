@@ -83,6 +83,34 @@
             });
         }
 
+        function deleteData(id) {
+            var csrf_token = $('meta[name="csrf-token"]').attr('content');
+            swal({
+                title: 'Tem certeza?',
+                text: "Deseja deletar esse registro ?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim Deletar isso'
+            }).then(function() {
+                $.ajax({
+                    url: "{{url('home')}}" + '/' + id,
+                    type: "POST",
+                    data: {'_method' : 'DELETE', '_token' : csrf_token},
+                    success: function(data) {
+                        table.ajax.reload();
+                        swal(
+                            'Deletado',
+                            'Esse Registro foi excluido ;)',
+                            'success'
+                        )
+                    },
+                    error : function () {
+                        alert("Erro")
+                    }
+                })
+            })
+        }
+
 
      $(function(){
          $('#modal-form form').validator().on('submit', function (e) {
